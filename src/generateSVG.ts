@@ -42,6 +42,7 @@ export default function generateSVG(mapData: MapData): string {
 
         if (mapObject.type === Type.Exit) {
             let size = svgScale * 25;
+            //svgArray.push(`<image x="${x - (size/2)}" y="${y - (size/2)}"  width="${size}" height="${size}" href="./icons/door.svg" />`)
             svgArray.push(`<rect x="${x}" y="${y}" width="${svgScale * 5}" height="${svgScale * 5}" style="stroke:purple;fill:purple"/>`)
         }
         
