@@ -1,7 +1,8 @@
 build/*
-!build/data
-build/data/*
-!build/data/26396577_Hell.json
-!build/data/1294978398_Hell.json
+dist/*
+!dist/data
+dist/data/*
+!dist/data/26396577_Hell.json
+!dist/data/1294978398_Hell.json
 
 node_modules/

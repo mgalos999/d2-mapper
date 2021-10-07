@@ -24,14 +24,14 @@ async function getData(url = '') {
 
 function saveFile(fileName: string, data: MapList) {
     console.log(`Saving file ${fileName}`);
-    if (!fs.existsSync(path.dirname(fileName))) fs.mkdirSync(path.dirname(fileName));
+    if (!fs.existsSync(path.dirname(fileName))) fs.mkdirSync(path.dirname(fileName), { recursive: true });
     fs.writeFileSync(fileName, JSON.stringify(data));
     console.log(`Cached JSON ${fileName}`)
 }
 
 
 export async function fetchData(seed: string, difficulty: string): Promise<MapList> {
-    let cachedFile = `./build/data/${seed}_${difficulty}.json`;
+    let cachedFile = `./dist/data/${seed}_${difficulty}.json`;
     let url = `http://localhost:8899/${seed}/${difficulty}.json`
 
     // fetch the data from the web and save to ./build/data folder

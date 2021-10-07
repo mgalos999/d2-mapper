@@ -1,17 +1,19 @@
 import { MapData, Type } from "./types/MapData.type";
+import * as fs from 'fs';
+import * as path from 'path';
 
-export default function generateSVG(mapData: MapData): string {
+function parseMapData(mapData: MapData): string {
     const svgScale = 2;
     
     let svgArray: string[] = [];
-    const svgHeight = mapData.size.height * svgScale * 1;
-    const svgWidth = mapData.size.width * svgScale * 1;
+    const svgHeight = mapData.size.height * svgScale * 2;
+    const svgWidth = mapData.size.width * svgScale * 2;
 
     //svgArray.push(`<svg width="${svgWidth}" height="${svgHeight}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background-color:black">`);
     svgArray.push(`<title>${mapData.name}</title>`);
     // this will force an isometric view
-    //svgArray.push(`<g id="source" transform="translate(500,${svgWidth * .4}) scale(1, .6) rotate(45)">`);
-    svgArray.push(`<g>`);
+    svgArray.push(`<g id="source" transform="translate(400,100) scale(1, .6) rotate(45)">`);
+    //svgArray.push(`<g>`);
     
     // this part generates the walls (collisions as it's called)
     const height = (1 * svgScale);
@@ -38,7 +40,7 @@ export default function generateSVG(mapData: MapData): string {
         });
     });
     // inject this line to the first element of the array
-    svgArray.unshift(`<svg width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${maxX} ${maxY}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background-color:black">`);
+    svgArray.unshift(`<svg width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${maxX * 1.5} ${maxY * 1.5}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background-color:black">`);
 
     // this part adds the special objects (doors, waypoints etc)
     mapData.objects.forEach((mapObject, index) => {
@@ -72,4 +74,16 @@ export default function generateSVG(mapData: MapData): string {
     svgArray.push("</g>"); // close group
     svgArray.push("</svg>"); // close svg
     return svgArray.join("\n");
+}
+
+function saveSVG(folderName: string, mapName: string, SVGdata: string) {   
+    folderName = path.resolve(folderName);
+    if (!fs.existsSync(folderName)) fs.mkdirSync(folderName, { recursive: true });
+    let fileName = path.join(folderName, mapName + ".svg");
+    fs.writeFileSync(fileName, SVGdata);
+}
+
+export default function generateSVG(mapData: MapData, path: string) {
+    const svgFileContents = parseMapData(mapData);
+    saveSVG(path, `${mapData.id}_${mapData.name}`, svgFileContents);
 }
