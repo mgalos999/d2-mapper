@@ -5,7 +5,6 @@
         "moduleResolution": "node",
         "outDir": "build/",
         "sourceMap": true,
-        "resolveJsonModule": true,
         "noImplicitAny": false,
     },
     "include": ["src/**/*"],

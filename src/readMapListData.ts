@@ -1,7 +1,7 @@
 import generateSVG from './generateSVG';
 import {MapList, MapData} from './types/MapData.type';
 import * as fs from 'fs';
-import path = require('path/posix');
+import * as path from 'path';
 
 export default function readMapListData(mapList: MapList) {
 
@@ -20,6 +20,5 @@ function saveSVG(folderName: string, mapName: string, SVGdata: string) {
     if (!fs.existsSync(folderName)) fs.mkdirSync(folderName);
     let fileName = path.join(folderName, mapName + ".svg");
     fs.writeFileSync(fileName, SVGdata);
-    console.log(`Generated ${fileName}`)
 }
 

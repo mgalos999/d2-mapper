@@ -1,6 +1,14 @@
-import * as rawData from './data/hell.json';
+import { fetchData } from './fetch';
 import readMapListData from './readMapListData';
 import { MapList } from './types/MapData.type';
 
-let mapList: MapList = <MapList>rawData;
-readMapListData(mapList)
+
+const seed = "27396577"; // hex string of seed value
+// const difficulty = "Normal"
+// const difficulty = "Nightmare"
+const difficulty = "Hell";
+
+const mapList: MapList = fetchData(seed, difficulty);
+
+if (mapList !== undefined) readMapListData(mapList);
+
