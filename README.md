@@ -20,7 +20,7 @@ However to get backend working:
 * Install Project Diablo 2
 * Install docker
 
-```
+```bash
 docker pull blacha/diablo2
 docker run -it -v "/E/Games/Diablo II":/app/game docker.io/blacha/diablo2:latest /bin/bash
 wine regedit /app/d2.install.reg
@@ -31,7 +31,7 @@ The last wine command tests that it's working
 
 This command will run a REST API server on port 8899:
 
-```
+```bash
 docker run -v "/E/Games/Diablo II":/app/game -p 8899:8899 docker.io/blacha/diablo2:latest
 ```
 
@@ -57,12 +57,12 @@ This repo has an already cached response for 26396577/Hell and 1294978398/Hell s
 
 ### Notes
 
-- Purple box for exits
-- Red dot for monsters
-- Yellow box for waypoint.
+* Purple box for exits
+* Red dot for monsters
+* Yellow box for waypoint.
 
 ## TODO
 
-- Hook this up to an API to generate from live data
-- Special icons/markings for exits and special items needs to be improved
-- More reliable creation of SVG, seems rotating seems to create issues with centering the image in the viewbox
+* Hook this up to an API to generate from live data
+* Special icons/markings for exits and special items needs to be improved
+* More reliable creation of SVG, seems rotating seems to create issues with centering the image in the viewbox

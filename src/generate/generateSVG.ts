@@ -4,13 +4,14 @@ export default function generateSVG(mapData: MapData): string {
     const svgScale = 2;
     
     let svgArray: string[] = [];
-    const svgHeight = mapData.size.height * svgScale * 2;
-    const svgWidth = mapData.size.width * svgScale * 2;
+    const svgHeight = mapData.size.height * svgScale * 1;
+    const svgWidth = mapData.size.width * svgScale * 1;
 
     svgArray.push(`<svg width="${svgWidth}" height="${svgHeight}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background-color:black">`);
     svgArray.push(`<title>${mapData.name}</title>`);
     // this will force an isometric view
-    svgArray.push(`<g id="source" transform="translate(100,${svgWidth * .4}) scale(1, .6) rotate(45)">`);
+    //svgArray.push(`<g id="source" transform="translate(500,${svgWidth * .4}) scale(1, .6) rotate(45)">`);
+    svgArray.push(`<g>`);
     
     // this part generates the walls (collisions as it's called)
     const height = (1 * svgScale);

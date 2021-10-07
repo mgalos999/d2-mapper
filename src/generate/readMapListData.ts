@@ -11,7 +11,7 @@ export default function readMapListData(mapList: MapList) {
     for (let mapIdx in mapList.maps) {
         let mapName = mapList.maps[mapIdx].name;
         let levelSVG = generateSVG(mapList.maps[mapIdx]);
-        saveSVG("./build/maps", mapName, levelSVG);
+        saveSVG("./build/svgs", mapName, levelSVG);
     }
     console.log("Generated SVG map files in ./build/maps")
 }
