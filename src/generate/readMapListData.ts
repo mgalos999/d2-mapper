@@ -10,8 +10,9 @@ export default function readMapListData(mapList: MapList) {
     console.log(`Difficulty ${mapList.difficulty}`)
     for (let mapIdx in mapList.maps) {
         let mapName = mapList.maps[mapIdx].name;
+        let mapId = mapList.maps[mapIdx].id;
         let levelSVG = generateSVG(mapList.maps[mapIdx]);
-        saveSVG("./build/svgs", mapName, levelSVG);
+        saveSVG("./build/svgs", `${mapId}_${mapName}`, levelSVG);
     }
     console.log("Generated SVG map files in ./build/maps")
 }
