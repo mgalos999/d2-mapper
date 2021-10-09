@@ -1,25 +1,26 @@
 {
   "name": "@mgalos999/d2-mapper",
-  "version": "0.5.7",
+  "version": "0.6.0",
   "description": "Generates images of Diablo 2 map data",
   "repository": "https://github.com/mgalos999/d2-mapper",
-  "main": "./build/index.js",
+  "main": "./build/index.ts",
+  "types": "./build/index.d.ts",
+  "files": [
+    "build",
+    "src"
+  ],
   "scripts": {
     "build": "tsc",
     "generate": "npm run build && node build/generateFromSeed.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "publishConfig": {
-    "registry":"https://npm.pkg.github.com"
-  },
   "author": "mgalos999",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^16.10.3",
     "typescript": "^4.4.3"
   },
   "dependencies": {
     "cross-fetch": "^3.1.4"
-  },
-  "type": "module"
+  }
 }

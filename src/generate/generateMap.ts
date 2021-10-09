@@ -110,7 +110,7 @@ function makeIsometric(rectangles: DrawingEntry[]) {
         `;
 }
 
-function saveHTML(folderName: string, mapName: string, HTMLdata: string) {
+function saveHTML(folderName: string, mapName: string, HTMLdata: string): void {
   folderName = path.resolve(folderName);
   if (!fs.existsSync(folderName)) fs.mkdirSync(folderName, { recursive: true });
   let fileName = path.join(folderName, mapName + ".html");
@@ -122,7 +122,7 @@ export async function generateHTML(
   mapData: MapData,
   path: string,
   templateHTML: string
-) {
+): Promise<void> {
   const htmlFileContents = await parseMapData(mapData, templateHTML);
   saveHTML(path, `${mapData.id}_${mapData.name}`, htmlFileContents);
 }

@@ -4,3 +4,4 @@ import  {generate} from "./generateFromSeed";
 import  {fetchData} from "./generate/fetch";
 
 export { generateHTML, readMapListData, generate, fetchData }
+export type { MapList, MapData } from './generate/types/MapData.type';

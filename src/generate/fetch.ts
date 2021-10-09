@@ -1,6 +1,6 @@
 import fetch from "cross-fetch";
 import * as fs from "fs";
-import path = require("path");
+import * as path from 'path';
 import { MapList } from "./types/MapData.type";
 
 async function getData(url = "") {

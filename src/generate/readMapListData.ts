@@ -3,7 +3,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { generateHTML } from "./generateMap";
 
-export default function readMapListData(mapList: MapList, basePath: string) {
+export default function readMapListData(mapList: MapList, basePath: string): void {
   let hexString: string = Number(mapList.seed).toString(16);
   console.log(`Id ${mapList.id}`);
   console.log(`Seed ${mapList.seed} (0x${hexString})`);
