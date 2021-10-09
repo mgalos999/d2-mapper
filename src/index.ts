@@ -1,4 +1,6 @@
-export { generateHTML } from "./generate/generateMap";
-export * as readMapListData from "./generate/readMapListData";
-export {generate} from "./generateFromSeed";
-export {fetchData} from "./generate/fetch";
+import { generateHTML } from "./generate/generateMap";
+import * as readMapListData from "./generate/readMapListData";
+import  {generate} from "./generateFromSeed";
+import  {fetchData} from "./generate/fetch";
+
+export { generateHTML, readMapListData, generate, fetchData }
