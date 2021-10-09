@@ -1,0 +1,36 @@
+<html>
+<head>
+    <style>
+        body {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<canvas id="box" width="1500" height="1500"></canvas>
+<script>
+    const STEPS         = 60; // increase or decrease to adjust speed
+    const ROTATION_STEP = Math.PI / STEPS;
+    const SCALE_STEP    = Math.pow( 1.5, 1.0 / STEPS ); // 150% at end
+
+    const render = function () {
+        const canvas = document.getElementById( 'box' );
+        const ctx    = canvas.getContext( '2d' );
+        const image  = new Image();
+        /*!-- CANVAS COMMANDS HERE --!*/
+        const drawRectangle = function (d) {
+            ctx.beginPath();
+            ctx.fillStyle = d.c;
+            ctx.fillRect(d.x, d.y, d.w, d.h);
+            ctx.stroke();
+        }
+        const drawingData = [/*!-- GENERATED DATA HERE --!*/];
+        drawingData.forEach(function (item) {
+            drawRectangle(item);
+        });
+    };
+
+    window.document.addEventListener( 'DOMContentLoaded', render );
+</script>
+</body>
+</html>

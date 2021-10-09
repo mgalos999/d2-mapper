@@ -21,6 +21,12 @@ async function getData(url = '') {
   return response.json();
 }
 
+async function fetchWebDataAndSave(cachedFile, url) {
+    console.log(`Fetching data from web ${url}`);
+    const mapList: MapList = await getData(url);
+    saveFile(cachedFile, mapList);
+    return mapList;
+}
 
 function saveFile(fileName: string, data: MapList) {
     console.log(`Saving file ${fileName}`);
@@ -29,18 +35,13 @@ function saveFile(fileName: string, data: MapList) {
     console.log(`Cached JSON ${fileName}`)
 }
 
-
 export async function fetchData(seed: string, difficulty: string): Promise<MapList> {
     let cachedFile = `./dist/data/${seed}_${difficulty}.json`;
     let url = `http://localhost:8899/${seed}/${difficulty}.json`
 
     // fetch the data from the web and save to ./build/data folder
     if (!fs.existsSync(cachedFile)) {
-        console.log(`Fetching data from web ${url}`);
-        const response: MapList = await getData(url);
-        let mapList: MapList = <MapList> response;
-        saveFile(cachedFile, mapList);
-        return mapList;
+        return await fetchWebDataAndSave(cachedFile, url);
     } else {
         // if it was previously saved, use the same file
         console.log(`Reading cached file ${cachedFile}`);
