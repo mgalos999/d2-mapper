@@ -3,7 +3,7 @@ import readMapListData from "./generate/readMapListData";
 import { Difficulty } from "./generate/types/Difficulty.type";
 import { MapList } from "./generate/types/MapData.type";
 
-export default async function generate(seed: string, difficulty: Difficulty, basePath: string) {
+export async function generate(seed: string, difficulty: Difficulty, basePath: string) {
   console.log("Started generting SVGS...");
   const mapList: MapList = await fetchData(seed, difficulty);
   readMapListData(mapList, basePath);
