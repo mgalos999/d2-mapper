@@ -1,6 +1,6 @@
 {
   "name": "@mgalos999/d2-mapper",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "description": "Generates images of Diablo 2 map data",
   "repository": "https://github.com/mgalos999/d2-mapper",
   "main": "./build/index.js",
