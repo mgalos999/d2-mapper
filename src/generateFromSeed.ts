@@ -3,14 +3,9 @@ import readMapListData from "./generate/readMapListData";
 import { Difficulty } from "./generate/types/Difficulty.type";
 import { MapList } from "./generate/types/MapData.type";
 
-export async function generate(seed: string, difficulty: Difficulty, basePath: string) {
-  console.log("Started generting SVGS...");
-  const mapList: MapList = await fetchData(seed, difficulty);
+export async function generate(seed: string, difficulty: Difficulty, basePath: string, baseUrl: string) {
+  console.log("Started generating maps...");
+  const mapList: MapList = await fetchData(baseUrl, seed, difficulty);
   readMapListData(mapList, basePath);
 }
 
-let basePath: string = `./dist/html/`;
-// change seed value or difficulty here
-let seed: string = parseInt("0x2C4EE754", 16).toString();
-
-generate(seed, Difficulty.Hell, basePath);

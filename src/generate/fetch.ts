@@ -39,11 +39,12 @@ function saveFile(fileName: string, data: MapList) {
 }
 
 export async function fetchData(
+  baseUrl: string,
   seed: string,
   difficulty: string
 ): Promise<MapList> {
   let cachedFile = `./dist/data/${seed}_${difficulty}.json`;
-  let url = `http://localhost:8899/${seed}/${difficulty}.json`;
+  let url = `${baseUrl}/v1/map/${seed}/${difficulty}.json`
 
   // fetch the data from the web and save to ./build/data folder
   if (!fs.existsSync(cachedFile)) {
