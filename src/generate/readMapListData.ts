@@ -1,7 +1,6 @@
-import generateSVG from './generateMap';
-import {MapList, MapData} from './types/MapData.type';
+import {MapList} from './types/MapData.type';
 import * as fs from 'fs';
-import generateHTML from './generateMap';
+import {generateHTML} from './generateMap';
 
 export default function readMapListData(mapList: MapList) {
     let hexString: string = Number(mapList.seed).toString(16);

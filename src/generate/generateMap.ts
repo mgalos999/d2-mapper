@@ -97,7 +97,7 @@ function saveHTML(folderName: string, mapName: string, HTMLdata: string) {
     console.log(`Saved ${fileName}...`);
 }
 
-export default async function generateHTML(mapData: MapData, path: string, templateHTML:string) {
+export async function generateHTML(mapData: MapData, path: string, templateHTML:string) {
     const htmlFileContents = await parseMapData(mapData, templateHTML);
     saveHTML(path, `${mapData.id}_${mapData.name}`, htmlFileContents);
 }
