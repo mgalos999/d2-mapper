@@ -2,14 +2,14 @@
 
 Diablo 2 maps are randomly generated based on a seed value and difficulty.  
 There is another project which uses Diablo 2 to generate JSON payloads describing the layout of these maps.
-This repo takes that data and creates HTML pages showing maps visually.
+This repo takes that data and creates PNGs and HTML pages showing maps visually.
 
 Refer to this project for more info <https://github.com/blacha/diablo2/tree/master/packages/map>
 
 This repo uses the above project as a backend server to generate data based on a given seed/difficulty.
 If you don't have that project setup to fetch JSON data, this repo comes with a few sample payloads you can try.
 
-At the moment this project is setup to take one sample output `src/dist/26396577_Hell.json` and generate SVGs from it.
+At the moment this project is setup to take one sample output `src/public/data/26396577_Hell.json` and generate images from it.
 
 ## Examples
 
@@ -57,32 +57,33 @@ npm build
 ### Execute example
 
 ```bash
-npm run example
+npm run generate
 ```
 
-This will generate HTML for every level in `./dist/svg/<seed>/<difficulty>` folder.
+```bash
+npm run generate <seed> <difficulty>
+npm run generate 26396577 2
+```
+
+
+This will generate HTML for every level in `./public/<seed>/<difficulty>` folder.
 You can open these HTML pages in any browser.
 
-In `example.ts` you can set a different seed value.
+`npm run generate` has a default seed value, but you can pass a seed value `npm run generate <seed>`
 
 This repo has an already cached response for 26396577/Hell and 1294978398/Hell so you can run this without a backed for those 2 settings.
 
 ### Usage
 
-This is a package that can be used to generate images from raw JSON.
+This is published as a package that can be used to generate images from raw JSON.
+It also has an API server, which is really used for demo purposes.
+
+#### REST API
+
+`npm run serve` will run an API server, where you could fetch images this way:
 
 ```typescript
-import { generate } from '@mgalos999/d2-mapper';
-
-generate("seedValue", "difficulty", './public/', "http://localhost:8899");
-```
-
-```typescript
-import { generateHTML } from '@mgalos999/d2-mapper';
-
-const mapData = { <individual map data> };
-const templateHTML = fs.readFileSync("./src/generate/template/template.html", { encoding: "utf8" });
-generateHTML(mapData, './public/', templateHTML);
+imageUrl = `http://localhost:3001/v1/map/${seedDecimal}/${selectedDifficulty}/${mapId}/image`;
 ```
 
 ### Notes
@@ -93,5 +94,5 @@ generateHTML(mapData, './public/', templateHTML);
 
 ## TODO
 
-* Viewbox alignment needs to be improved, seems to be a tricky thing to solve
-* Special icons/markings for exits and special items to be improved
+* Getting an isometric perspective to work is tricky to get right, it's a flat top down perspective for now
+* Special icons/markings for exits and special items to be improved (bosses, special chests etc)

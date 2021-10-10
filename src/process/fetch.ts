@@ -1,7 +1,7 @@
 import fetch from "cross-fetch";
 import * as fs from "fs";
 import * as path from 'path';
-import { MapList } from "./types/MapData.type";
+import { MapList } from "../types/MapData.type";
 
 async function getData(url = "") {
   // Default options are marked with *
@@ -43,7 +43,7 @@ export async function fetchData(
   seed: string,
   difficulty: string
 ): Promise<MapList> {
-  let cachedFile = `./dist/data/${seed}_${difficulty}.json`;
+  let cachedFile = `./public/data/${seed}_${difficulty}.json`;
   let url = `${baseUrl}/v1/map/${seed}/${difficulty}.json`
 
   // fetch the data from the web and save to ./build/data folder

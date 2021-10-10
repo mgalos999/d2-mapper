@@ -1,8 +1,8 @@
 build/*
-dist/*
-!dist/data
-dist/data/*
-!dist/data/26396577_Hell.json
-!dist/data/1294978398_Hell.json
+public/*
+!public/data
+public/data/*
+!public/data/26396577_Hell.json
+!public/data/1294978398_Hell.json
 
 node_modules/

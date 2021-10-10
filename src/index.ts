@@ -1,7 +1,9 @@
-import { generateHTML } from "./generate/generateMap";
-import * as readMapListData from "./generate/readMapListData";
+import { parseMapData } from "./process/parseMapData";
+import * as readMapListData from "./process/parseMapListData";
 import  {generate} from "./generateFromSeed";
-import  {fetchData} from "./generate/fetch";
+import  {fetchData} from "./process/fetch";
+import { generatePNG } from './process/generatePNG';
+import { generateHTML } from './process/generateHTML';
 
-export { generateHTML, readMapListData, generate, fetchData }
-export type { MapList, MapData } from './generate/types/MapData.type';
+export { parseMapData, readMapListData, generate, fetchData, generatePNG, generateHTML }
+export type { MapList, MapData } from './types/MapData.type';

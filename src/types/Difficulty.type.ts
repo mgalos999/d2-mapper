@@ -3,4 +3,3 @@ export enum Difficulty {
     Nightmare = "Nightmare",
     Hell = "Hell",
 }
-
