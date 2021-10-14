@@ -1,7 +1,7 @@
 import { createCanvas } from "canvas";
 import { getActualSize, parseMapData } from "./parseMapData";
 import { MapData } from "../types/MapData.type";
-import { DrawingEntry } from "../types/DrawingData.type";
+import { DrawingElements } from "../types/DrawingData.type";
 import * as fs from "fs";
 import * as path from "path";
 import { MapMod } from "../types/MapMod.type";
@@ -16,11 +16,11 @@ function savePNG(folderName: string, mapName: string, HTMLdata: Buffer): void {
 
 export async function generatePNGfromMap(
   mapData: MapData,
-  path: string
+  path: string = ""
 ): Promise<Buffer> {
   let mapAttributes: MapMod = { color: "#AAAAAA", xOffset: 0, yOffset: 0 };
-  let rectangles: DrawingEntry[] = await parseMapData(mapData, mapAttributes);
-  let buf: Buffer = await generatePNG(rectangles);
+  let de: DrawingElements = await parseMapData(mapData, mapAttributes);
+  let buf: Buffer = await generatePNG(de);
   if (path !== "") {
     const fileName: string = `${mapData.id}_${mapData.name}`;
     savePNG(path, fileName, buf);
@@ -28,18 +28,26 @@ export async function generatePNGfromMap(
   return buf;
 }
 
-export async function generatePNG(rectangles: DrawingEntry[]): Promise<Buffer> {
+export async function generatePNG(de: DrawingElements): Promise<Buffer> {
   
   const canvas = createCanvas(3000, 3000);
   const ctx = canvas.getContext("2d");
-  let [minX, minY, maxX, maxY] = getActualSize(rectangles);
+  let [minX, minY, maxX, maxY] = getActualSize(de.rectangles);
 
-  rectangles.forEach((d) => {
+  de.rectangles.forEach((d) => {
     ctx.beginPath();
     ctx.fillStyle = d.c;
     ctx.fillRect(d.x, d.y, d.w, d.h);
     ctx.stroke();
   });
+
+  de.circles.forEach((d) => {
+    ctx.beginPath();
+    ctx.fillStyle = d.c;
+    ctx.arc(d.x, d.y+(d.w/2), d.w/2, 0, 2 * Math.PI);
+    ctx.fill();
+  });
+
 
   // this section will crop the excess space surrounding the map
   const canvas2 = createCanvas(maxX, maxY);

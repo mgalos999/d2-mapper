@@ -1,13 +1,12 @@
 import { MapData, Type } from "../types/MapData.type";
-import { DrawingEntry } from "../types/DrawingData.type";
+import { Circle, DrawingElements, Rectangle } from "../types/DrawingData.type";
 import { MapMod } from "../types/MapMod.type";
 
 // accepts data for a single map and HTML template and generates an array of rectangles to draw
-export async function parseMapData(mapData: MapData, mapAttributes: MapMod): Promise<DrawingEntry[]> {
+export async function parseMapData(mapData: MapData, mapAttributes: MapMod): Promise<DrawingElements> {
   
   const dotSize = 2; // pixel size
-
-  let rectangles: DrawingEntry[] = [];
+  let de: DrawingElements = { rectangles: [], circles: [], icons: [] };
 
   // this part generates the walls (collisions as it's called)
   mapData.map.forEach((coord, index) => {
@@ -21,7 +20,7 @@ export async function parseMapData(mapData: MapData, mapAttributes: MapMod): Pro
       // the second value is void space and not necessary
       fill = !fill;
       if (!fill) {
-        rectangles.push({ x: x, y: y, w: width, h: dotSize, c: mapAttributes.color });
+        de.rectangles.push({ x: x, y: y, w: width, h: dotSize, c: mapAttributes.color });
       }
       x = x + width;
     });
@@ -36,52 +35,48 @@ export async function parseMapData(mapData: MapData, mapAttributes: MapMod): Pro
     if (mapObject.type === Type.Object) {
       if (mapObject.name == "Waypoint") {
         let size = dotSize * 10;
-        rectangles.push({x: x - size / 2, y: y - size / 2, w: size,h: size, c: "#FFFF00"});
+        de.rectangles.push({x: x - size / 2, y: y - size / 2, w: size,h: size, c: "#FFFF00"});
       }
 
       if (mapObject.name == "chest") {
-        rectangles.push(drawObjRectangle(1, x, y, "#00FFFF"));
-      }
-
-      if (mapObject.name == "cagedwussie1") {
-        rectangles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
+        de.rectangles.push(drawObjRectangle(1, x, y, "#00FFFF"));
       }
 
       // tal rasha orifice to fight duriel
       if (mapObject.name == "orifice") {
-        rectangles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
+        de.circles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
       }
 
       // Inifuss tree
       if (mapObject.name == "Inifuss") {
-        rectangles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
+        de.circles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
       }
 
       // claw viper temple 2 altar
       if (mapObject.name == "taintedsunaltar") {
-        rectangles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
+        de.circles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
       }
 
       // claw viper temple 2 altar
       if (mapObject.name == "Tome") {
-        rectangles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
+        de.circles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
       }
 
       if (mapObject.name == "Hellforge") {
-        rectangles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
+        de.circles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
       }
 
       if (mapObject.name == "gidbinn altar") {
-        rectangles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
+        de.circles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
       }
 
-      if (mapObject.name == "Altar") {
-        rectangles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
-      }
+      // if (mapObject.name == "Altar") {
+      //   de.circles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
+      // }
 
       // prisoners in act 5
       if (mapObject.name == "cagedwussie1") {
-        rectangles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
+        de.circles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
       }
     }
 
@@ -90,9 +85,9 @@ export async function parseMapData(mapData: MapData, mapAttributes: MapMod): Pro
       
       // magot lair boss
       if (mapData.name == "Maggot Lair Level 3") {
-        rectangles.push(drawObjRectangle(dotSize, x, y, "#FF0000"));    
+        de.rectangles.push(drawObjRectangle(dotSize, x, y, "#FF0000"));    
       } else {
-        rectangles.push({
+        de.rectangles.push({
           x: x - dotSize / 2,
           y: y - dotSize / 2,
           w: dotSize,
@@ -105,7 +100,7 @@ export async function parseMapData(mapData: MapData, mapAttributes: MapMod): Pro
     // Exits
     if (mapObject.type === Type.Exit) {
       let size = dotSize * 10;
-      rectangles.push({
+      de.rectangles.push({
         x: x - size / 2,
         y: y - size / 2,
         w: size,
@@ -114,7 +109,7 @@ export async function parseMapData(mapData: MapData, mapAttributes: MapMod): Pro
       });
     }
   });
-  return rectangles;
+  return de;
 }
 
 function drawObjRectangle(dotSize, x, y, color) {
@@ -122,20 +117,20 @@ function drawObjRectangle(dotSize, x, y, color) {
     return {x: x - size / 2, y: y - size / 2, w: size,h: size, c: color}
 }
 
-export function getActualSize(rectangles: DrawingEntry[]): [number, number, number, number] {
-  const minX: DrawingEntry = rectangles.reduce(function (prev, curr) {
+export function getActualSize(rectangles: Rectangle[]): [number, number, number, number] {
+  const minX: Rectangle = rectangles.reduce(function (prev, curr) {
     return prev.x < curr.x ? prev : curr;
   });
 
-  const minY: DrawingEntry = rectangles.reduce(function (prev, curr) {
+  const minY: Rectangle = rectangles.reduce(function (prev, curr) {
     return prev.y < curr.y ? prev : curr;
   });
 
-  const maxX: DrawingEntry = rectangles.reduce(function (prev, curr) {
+  const maxX: Rectangle = rectangles.reduce(function (prev, curr) {
     return (prev.x + prev.w) > (curr.x + curr.w) ? prev : curr;
   });
 
-  const maxY: DrawingEntry = rectangles.reduce(function (prev, curr) {
+  const maxY: Rectangle = rectangles.reduce(function (prev, curr) {
     return (prev.y + prev.h) > (curr.y + curr.h) ? prev : curr;
   });
   return [minX.x, minY.y, maxX.x + maxX.w, maxY.y + maxY.h];
