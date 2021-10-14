@@ -2,8 +2,7 @@ import { Difficulty } from './types/Difficulty.type';
 import { generate, generateSingle} from './generateFromSeed';
 
 let basePath: string = `./public/`;
-// let baseUrl: string = "http://localhost:8899";
-let baseUrl: string = "https://diablo2.chard.dev";
+let baseUrl: string = "http://localhost:8899";
 // usage:
 
 // npm run generate <seed in hex> <difficulty 0,1,2>

@@ -13,11 +13,11 @@ At the moment this project is setup to take one sample output `src/public/data/2
 
 ## Examples
 
-##### Durance of hate level 2
+### Durance of hate level 2
 
 ![Durance of hate level 2](duranceofhate.png)
 
-##### Arcane Sanctuary
+### Arcane Sanctuary
 
 ![Arcane Sancutuary](arcanesanctuary.png)
 
@@ -64,8 +64,8 @@ Seed value must be in hex
 
 ```bash
 npm run generate <seed> <difficulty> <level>
-npm run generate 26396577 2      # will generate all maps for hell
-npm run generate 26396577 2 56   # will generate mapId 56
+npm run generate 26396577 2      # will generate ALL maps for seed 26396577 hell
+npm run generate 26396577 1 74   # will generate mapId 74 for seed 26396577 nightmare (74 is arcane sanc)
 ```
 
 This will generate HTML for every level in `./public/<seed>/<difficulty>` folder.
@@ -84,6 +84,10 @@ It also has an API server, which is really used for demo purposes.
 
 `npm run serve` will run an API server, where you could fetch images this way:
 
+```bash
+curl -L -X GET "localhost:3001/v1/map/278898225/1/5/image"
+```
+
 ```typescript
 imageUrl = `http://localhost:3001/v1/map/${seedDecimal}/${selectedDifficulty}/${mapId}/image`;
 ```
@@ -92,9 +96,11 @@ imageUrl = `http://localhost:3001/v1/map/${seedDecimal}/${selectedDifficulty}/${
 
 * Purple box for exits
 * Red dot for monsters
-* Yellow box for waypoint.
+* Yellow box for waypoint
+* Green box for quest items (altars etc)
+* Cyan box for chests
 
 ## TODO
 
-* Getting an isometric perspective to work is tricky to get right, it's a flat top down perspective for now
 * Special icons/markings for exits and special items to be improved (bosses, special chests etc)
+* Create a method to combine outdoor maps
