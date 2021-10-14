@@ -1,8 +1,8 @@
-import { MapList } from "../types/MapData.type";
+import { MapData, MapList } from "../types/MapData.type";
 import * as fs from "fs";
 import * as path from "path";
-import { generatePNG } from "./generatePNG";
-import { generateHTML } from './generateHTML';
+import { generatePNGfromMap } from "./generatePNG";
+import { generateHTMLfromMap } from './generateHTML';
 import { Difficulty } from "../types/Difficulty.type";
 
 export default async function parseMapListData(
@@ -26,8 +26,10 @@ export default async function parseMapListData(
 
   let generatedFiles: string[] = [];
   for (let mapIdx in mapList.maps) {
-    generateHTML(mapList.maps[mapIdx], saveLocation, templateHTML);
-    generatePNG(mapList.maps[mapIdx], saveLocation);
+    let thisMap: MapData = mapList.maps[mapIdx];
+    generateHTMLfromMap(thisMap, saveLocation, templateHTML);
+    generatePNGfromMap(thisMap, saveLocation);
   }
+
   return generatedFiles;
 }

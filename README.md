@@ -60,11 +60,12 @@ npm build
 npm run generate
 ```
 
+Seed value must be in hex
+
 ```bash
 npm run generate <seed> <difficulty>
 npm run generate 26396577 2
 ```
-
 
 This will generate HTML for every level in `./public/<seed>/<difficulty>` folder.
 You can open these HTML pages in any browser.

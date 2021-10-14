@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { DrawingEntry } from "../types/DrawingData.type";
 import { MapData } from "../types/MapData.type";
+import { MapMod } from "../types/MapMod.type";
 import { getActualSize, parseMapData } from "./parseMapData";
 
 function saveHTML(folderName: string, mapName: string, HTMLdata: string): void {
@@ -23,13 +24,25 @@ function makeIsometric(rectangles: DrawingEntry[]) {
           `;
 }
 
-export async function generateHTML(
+export async function generateHTMLfromMap(
   mapData: MapData,
   path: string,
   templateHTML: string
 ): Promise<string> {
-  let rectangles: DrawingEntry[] = await parseMapData(mapData);
+  let mapAttributes: MapMod = { color: "#AAAAAA", xOffset: 0, yOffset: 0 };
+  let rectangles: DrawingEntry[] = await parseMapData(mapData, mapAttributes);
+  const htmlContents = await generateHTML(rectangles, templateHTML);
+  const fileName: string = `${mapData.id}_${mapData.name}`;
+  if (path !== "") {
+    saveHTML(path, fileName, htmlContents);
+  }
+  return htmlContents;
+}
 
+export async function generateHTML(
+  rectangles: DrawingEntry[],
+  templateHTML: string
+): Promise<string> {
   let htmlContents = templateHTML.replace(
     "[/*!-- GENERATED DATA HERE --!*/]",
     JSON.stringify(rectangles, null, 2)
@@ -39,10 +52,5 @@ export async function generateHTML(
     "/*!-- CANVAS COMMANDS HERE --!*/",
     isometricCommands
   );
-
-  const fileName: string = `${mapData.id}_${mapData.name}`;
-  if (path !== "") {
-    saveHTML(path, fileName, htmlContents);
-  }
   return htmlContents;
 }

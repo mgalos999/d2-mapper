@@ -3,8 +3,8 @@ import * as fs from 'fs';
 import { fetchData } from "../process/fetch";
 import readMapListData from "../process/parseMapListData";
 import { MapList } from "../types/MapData.type";
-import { generateHTML } from "../process/generateHTML";
-import { generatePNG } from "../process/generatePNG";
+import { generateHTML, generateHTMLfromMap } from "../process/generateHTML";
+import { generatePNG, generatePNGfromMap } from "../process/generatePNG";
 
 const baseUrl = process.env.BASEURL
 
@@ -25,9 +25,7 @@ app.get("/v1/map/:seed/:difficulty", async (req, res) => {
     const seed = req.params.seed;
     const difficulty = req.params.difficulty;
     const mapList: MapList = await fetchData(baseUrl, seed, difficulty);
-    const basePath = "./public";
-    const fileList = await readMapListData(mapList, basePath);
-    res.json(fileList);
+    res.json(mapList);
 });
 
 app.get("/v1/map/:seed/:difficulty/:mapid/html", async (req, res) => {
@@ -40,7 +38,7 @@ app.get("/v1/map/:seed/:difficulty/:mapid/html", async (req, res) => {
       "./src/process/template/template.html",
       { encoding: "utf8" }
     );
-    const html: string = await generateHTML(mapList.maps[mapid], "", templateHTML);
+    const html: string = await generateHTMLfromMap(mapList.maps[mapid], "", templateHTML);
     res.send(html);
 });
 
@@ -50,7 +48,7 @@ app.get("/v1/map/:seed/:difficulty/:mapid/image", async (req, res) => {
     const mapid: string = req.params.mapid;
     const mapList: MapList = await fetchData(baseUrl, seed, difficulty);
 
-    const pngBuffer: Buffer = await generatePNG(mapList.maps[mapid], "");
+    const pngBuffer: Buffer = await generatePNGfromMap(mapList.maps[mapid], "");
     
     const base64Data = pngBuffer.toString('base64').replace(/^data:image\/(png|jpeg|jpg);base64,/, '');
     const img = Buffer.from(base64Data, 'base64');

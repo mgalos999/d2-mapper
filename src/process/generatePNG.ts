@@ -4,6 +4,7 @@ import { MapData } from "../types/MapData.type";
 import { DrawingEntry } from "../types/DrawingData.type";
 import * as fs from "fs";
 import * as path from "path";
+import { MapMod } from "../types/MapMod.type";
 
 function savePNG(folderName: string, mapName: string, HTMLdata: Buffer): void {
   folderName = path.resolve(folderName);
@@ -13,11 +14,22 @@ function savePNG(folderName: string, mapName: string, HTMLdata: Buffer): void {
   console.log(`Saved ${fileName}...`);
 }
 
-export async function generatePNG(
+export async function generatePNGfromMap(
   mapData: MapData,
   path: string
 ): Promise<Buffer> {
-  let rectangles: DrawingEntry[] = await parseMapData(mapData);
+  let mapAttributes: MapMod = { color: "#AAAAAA", xOffset: 0, yOffset: 0 };
+  let rectangles: DrawingEntry[] = await parseMapData(mapData, mapAttributes);
+  let buf: Buffer = await generatePNG(rectangles);
+  if (path !== "") {
+    const fileName: string = `${mapData.id}_${mapData.name}`;
+    savePNG(path, fileName, buf);
+  }
+  return buf;
+}
+
+export async function generatePNG(rectangles: DrawingEntry[]): Promise<Buffer> {
+  
   const canvas = createCanvas(3000, 3000);
   const ctx = canvas.getContext("2d");
   let [minX, minY, maxX, maxY] = getActualSize(rectangles);
@@ -37,10 +49,6 @@ export async function generatePNG(
     0, 0,     // Place the result at 0, 0 in the canvas,
     maxX, maxY); // With as width / height: 160 * 60 (scale)
   
-  const buf = canvas2.toBuffer("image/png");
-  if (path !== "") {
-    const fileName: string = `${mapData.id}_${mapData.name}`;
-    savePNG(path, fileName, buf);
-  }
-  return buf;
+  return canvas2.toBuffer("image/png");
 }
+
