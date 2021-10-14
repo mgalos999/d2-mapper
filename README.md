@@ -63,8 +63,9 @@ npm run generate
 Seed value must be in hex
 
 ```bash
-npm run generate <seed> <difficulty>
-npm run generate 26396577 2
+npm run generate <seed> <difficulty> <level>
+npm run generate 26396577 2      # will generate all maps for hell
+npm run generate 26396577 2 56   # will generate mapId 56
 ```
 
 This will generate HTML for every level in `./public/<seed>/<difficulty>` folder.

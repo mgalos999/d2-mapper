@@ -46,10 +46,9 @@ app.get("/v1/map/:seed/:difficulty/:mapid/image", async (req, res) => {
     const seed: string = req.params.seed;
     const difficulty: string = req.params.difficulty;
     const mapid: string = req.params.mapid;
-    const mapList: MapList = await fetchData(baseUrl, seed, difficulty);
-
-    const pngBuffer: Buffer = await generatePNGfromMap(mapList.maps[mapid], "");
     
+    const mapList: MapList = await fetchData(baseUrl, seed, difficulty);
+    const pngBuffer: Buffer = await generatePNGfromMap(mapList.maps[mapid], "");
     const base64Data = pngBuffer.toString('base64').replace(/^data:image\/(png|jpeg|jpg);base64,/, '');
     const img = Buffer.from(base64Data, 'base64');
 

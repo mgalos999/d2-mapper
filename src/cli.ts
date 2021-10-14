@@ -1,10 +1,9 @@
 import { Difficulty } from './types/Difficulty.type';
-import { generate} from './generateFromSeed';
+import { generate, generateSingle} from './generateFromSeed';
 
 let basePath: string = `./public/`;
-let baseUrl: string = "http://localhost:8899";
-
-
+// let baseUrl: string = "http://localhost:8899";
+let baseUrl: string = "https://diablo2.chard.dev";
 // usage:
 
 // npm run generate <seed in hex> <difficulty 0,1,2>
@@ -25,4 +24,9 @@ if (args[1] !== undefined) {
     else if (args[1] == '1') difficulty = Difficulty.Nightmare
 }
 
-generate(seed, difficulty, basePath, baseUrl);
+if (args[2] !== undefined) {
+    generateSingle(seed, difficulty, basePath, baseUrl, Number(args[2]));
+} else {
+    generate(seed, difficulty, basePath, baseUrl);
+}
+

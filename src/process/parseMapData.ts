@@ -39,6 +39,14 @@ export async function parseMapData(mapData: MapData, mapAttributes: MapMod): Pro
         rectangles.push({x: x - size / 2, y: y - size / 2, w: size,h: size, c: "#FFFF00"});
       }
 
+      if (mapObject.name == "chest") {
+        rectangles.push(drawObjRectangle(1, x, y, "#00FFFF"));
+      }
+
+      if (mapObject.name == "cagedwussie1") {
+        rectangles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
+      }
+
       // tal rasha orifice to fight duriel
       if (mapObject.name == "orifice") {
         rectangles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
@@ -79,13 +87,19 @@ export async function parseMapData(mapData: MapData, mapAttributes: MapMod): Pro
 
     // NPCs
     if (mapObject.type === Type.NPC) {
-      rectangles.push({
-        x: x - dotSize / 2,
-        y: y - dotSize / 2,
-        w: dotSize,
-        h: dotSize,
-        c: "#FF0000",
-      });
+      
+      // magot lair boss
+      if (mapData.name == "Maggot Lair Level 3") {
+        rectangles.push(drawObjRectangle(dotSize, x, y, "#FF0000"));    
+      } else {
+        rectangles.push({
+          x: x - dotSize / 2,
+          y: y - dotSize / 2,
+          w: dotSize,
+          h: dotSize,
+          c: "#FF0000",
+        });
+      }
     }
 
     // Exits

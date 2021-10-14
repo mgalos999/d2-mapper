@@ -41,14 +41,33 @@ export async function generatePNG(rectangles: DrawingEntry[]): Promise<Buffer> {
     ctx.stroke();
   });
 
+  // this section will crop the excess space surrounding the map
   const canvas2 = createCanvas(maxX, maxY);
   const ctx2 = canvas2.getContext("2d");
   ctx2.drawImage(canvas,
-    minX, minY,   // Start at 10 pixels from the left and the top of the image (crop),
-    maxX-minX, maxY-minY,   // "Get" a `80 * 30` (w * h) area from the source image (crop),
-    0, 0,     // Place the result at 0, 0 in the canvas,
-    maxX, maxY); // With as width / height: 160 * 60 (scale)
-  
-  return canvas2.toBuffer("image/png");
+    minX, minY,
+    maxX-minX, maxY-minY,
+    0, 0,
+    maxX, maxY);
+
+  // make the image isometric
+  const hypot = Math.sqrt((maxX * maxX) + (maxY * maxY));
+  const canvas3 = createCanvas(hypot, hypot);
+  const ctx3 = canvas3.getContext("2d");
+  ctx3.translate(hypot/2, hypot/2);
+  ctx3.scale(1, 0.6);
+  ctx3.rotate(45 * Math.PI /180)
+  ctx3.translate(-(maxX/2), -(maxY/2));
+  ctx3.drawImage(canvas2, 0,0);
+
+
+  // make the image isomettric
+
+  const canvas4 = createCanvas(hypot, hypot);
+  const ctx4 = canvas4.getContext("2d");
+  ctx4.drawImage(canvas3, 0,0);
+
+
+  return canvas3.toBuffer("image/png");
 }
 
