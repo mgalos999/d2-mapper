@@ -42,58 +42,27 @@ export async function parseMapData(mapData: MapData, mapAttributes: MapMod): Pro
         de.rectangles.push(drawObjRectangle(1, x, y, "#00FFFF"));
       }
 
-      // tal rasha orifice to fight duriel
-      if (mapObject.name == "orifice") {
-        de.circles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
-      }
-
-      // Inifuss tree
-      if (mapObject.name == "Inifuss") {
-        de.circles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
-      }
-
-      // claw viper temple 2 altar
-      if (mapObject.name == "taintedsunaltar") {
-        de.circles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
-      }
-
-      // claw viper temple 2 altar
-      if (mapObject.name == "Tome") {
-        de.circles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
-      }
-
-      if (mapObject.name == "Hellforge") {
-        de.circles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
-      }
-
-      if (mapObject.name == "gidbinn altar") {
-        de.circles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
-      }
-
-      // if (mapObject.name == "Altar") {
-      //   de.circles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
-      // }
-
-      // prisoners in act 5
-      if (mapObject.name == "cagedwussie1") {
-        de.circles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
+      //quest items adding a green circle
+      switch (mapObject.name) {
+        case 'orifice':
+        case 'Inifuss':
+        case 'taintedsunaltar': // claw viper temple 2 altar
+        case 'gidbinn altar':
+        case 'Tome': 
+        case 'Hellforge':
+        case 'cagedwussie1':   // prisoners act 5
+          de.circles.push(drawObjRectangle(dotSize, x, y, "#00FF00"));
+          break
       }
     }
 
     // NPCs
     if (mapObject.type === Type.NPC) {
-      
       // magot lair boss
       if (mapData.name == "Maggot Lair Level 3") {
-        de.rectangles.push(drawObjRectangle(dotSize, x, y, "#FF0000"));    
+        de.circles.push(drawObjRectangle(dotSize, x, y, "#FF0000"));    
       } else {
-        de.rectangles.push({
-          x: x - dotSize / 2,
-          y: y - dotSize / 2,
-          w: dotSize,
-          h: dotSize,
-          c: "#FF0000",
-        });
+        de.circles.push({x: x, y: y, w: dotSize, h: dotSize, c: "#FF0000" });
       }
     }
 
