@@ -79,7 +79,6 @@ export async function parseMapData(levelData: Level, mapAttributes: MapMod): Pro
 
     // Exits
     if (mapObject.type === ObjectType.Exit) {
-      // console.log(`${mapData.id},${mapData.name},${mapObject.id}`);
       let size = dotSize * 10;
 
       de.rectangles.push({

@@ -103,4 +103,5 @@ imageUrl = `http://localhost:3001/v1/map/${seedDecimal}/${selectedDifficulty}/${
 ## TODO
 
 * Special icons/markings for exits and special items to be improved (bosses, special chests etc)
-* Create a method to combine outdoor maps
+* Making the map isometric makes it hard to dynamically draw on maps
+* Will probably totally rewrite how maps are drawn
