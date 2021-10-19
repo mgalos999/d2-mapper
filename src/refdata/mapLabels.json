@@ -1,0 +1,900 @@
+{
+    "mapRefList":[
+       {
+          "id":1,
+          "name":"Rogue Encampment",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":2,
+          "name":"Blood Moor",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":8,
+          "name":"Den of Evil",
+          "act":1,
+          "mapText": "DoE",
+          "mapIcon": ""
+       },
+       {
+          "id":3,
+          "name":"Cold Plains",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":4,
+          "name":"Stony Field",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":10,
+          "name":"Underground Passage Level 1",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":14,
+          "name":"Underground Passage Level 2",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":5,
+          "name":"Dark Wood",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":6,
+          "name":"Black Marsh",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":20,
+          "name":"Forgotten Tower",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":21,
+          "name":"Tower Cellar Level 1",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":22,
+          "name":"Tower Cellar Level 2",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":23,
+          "name":"Tower Cellar Level 3",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":24,
+          "name":"Tower Cellar Level 4",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":25,
+          "name":"Tower Cellar Level 5",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":7,
+          "name":"Tamoe Highland",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":12,
+          "name":"Pit Level 1",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":16,
+          "name":"Pit Level 2",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":9,
+          "name":"Cave Level 1",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":11,
+          "name":"Hole Level 1",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":13,
+          "name":"Cave Level 2",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":15,
+          "name":"Hole Level 2",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":17,
+          "name":"Burial Grounds",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":18,
+          "name":"Crypt",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":19,
+          "name":"Mausoleum",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":26,
+          "name":"Monastery Gate",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":27,
+          "name":"Outer Cloister",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":28,
+          "name":"Barracks",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":29,
+          "name":"Jail Level 1",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":30,
+          "name":"Jail Level 2",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":31,
+          "name":"Jail Level 3",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":32,
+          "name":"Inner Cloister",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":33,
+          "name":"Cathedral",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":34,
+          "name":"Catacombs Level 1",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":35,
+          "name":"Catacombs Level 2",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":36,
+          "name":"Catacombs Level 3",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":37,
+          "name":"Catacombs Level 4",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":38,
+          "name":"Tristram",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":39,
+          "name":"Moo Moo Farm",
+          "act":1,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":40,
+          "name":"Lut Gholein",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":47,
+          "name":"Sewers Level 1",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":48,
+          "name":"Sewers Level 2",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":49,
+          "name":"Sewers Level 3",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":41,
+          "name":"Rocky Waste",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":55,
+          "name":"Stony Tomb Level 1",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":59,
+          "name":"Stony Tomb Level 2",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":42,
+          "name":"Dry Hills",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":56,
+          "name":"Halls of the Dead Level 1",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":57,
+          "name":"Halls of the Dead Level 2",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":60,
+          "name":"Halls of the Dead Level 3",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":43,
+          "name":"Far Oasis",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":62,
+          "name":"Maggot Lair Level 1",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":63,
+          "name":"Maggot Lair Level 2",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":64,
+          "name":"Maggot Lair Level 3",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":44,
+          "name":"Lost City",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":45,
+          "name":"Valley of Snakes",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":58,
+          "name":"Claw Viper Temple Level 1",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":61,
+          "name":"Claw Viper Temple Level 2",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":50,
+          "name":"Harem Level 1",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":51,
+          "name":"Harem Level 2",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":52,
+          "name":"Palace Cellar Level 1",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":53,
+          "name":"Palace Cellar Level 2",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":54,
+          "name":"Palace Cellar Level 3",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":74,
+          "name":"Arcane Sanctuary",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":46,
+          "name":"Canyon of the Magi",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":69,
+          "name":"Tal Rasha's Tomb - Circle",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":70,
+          "name":"Tal Rasha's Tomb - Two Chevons",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":71,
+          "name":"Tal Rasha's Tomb - Triangle",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":72,
+          "name":"Tal Rasha's Tomb - Circle with line",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":66,
+          "name":"Tal Rasha's Tomb - Star",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":67,
+          "name":"Tal Rasha's Tomb - Square",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":68,
+          "name":"Tal Rasha's Tomb - Semi circle",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":73,
+          "name":"Duriel's Lair",
+          "act":2,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":75,
+          "name":"Kurast Docktown",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":76,
+          "name":"Spider Forest",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":77,
+          "name":"Great Marsh",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":78,
+          "name":"Flayer Jungle",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":79,
+          "name":"Lower Kurast",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":80,
+          "name":"Kurast Bazaar",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":81,
+          "name":"Upper Kurast",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":82,
+          "name":"Kurast Causeway",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":83,
+          "name":"Travincal",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":84,
+          "name":"Arachnid Cave",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":85,
+          "name":"Spider Cavern",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":86,
+          "name":"Swampy Pit Level 1",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":87,
+          "name":"Swampy Pit Level 2",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":90,
+          "name":"Swampy Pit Level 3",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":88,
+          "name":"Flayer Dungeon Level 1",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":89,
+          "name":"Flayer Dungeon Level 2",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":91,
+          "name":"Flayer Dungeon Level 3",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":92,
+          "name":"Sewers Level 1",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":93,
+          "name":"Sewers Level 2",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":94,
+          "name":"Ruined Temple",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":95,
+          "name":"Disused Fane",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":96,
+          "name":"Forgotten Reliquary",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":97,
+          "name":"Forgotten Temple",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":98,
+          "name":"Ruined Fane",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":99,
+          "name":"Disused Reliquary",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":100,
+          "name":"Durance of Hate Level 1",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":101,
+          "name":"Durance of Hate Level 2",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":102,
+          "name":"Durance of Hate Level 3",
+          "act":3,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":103,
+          "name":"The Pandemonium Fortress",
+          "act":4,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":104,
+          "name":"Outer Steppes",
+          "act":4,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":105,
+          "name":"Plains of Despair",
+          "act":4,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":106,
+          "name":"City of the Damned",
+          "act":4,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":107,
+          "name":"River of Flame",
+          "act":4,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":108,
+          "name":"Chaos Sanctum",
+          "act":4,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":109,
+          "name":"Harrogath",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":110,
+          "name":"Bloody Foothills",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":111,
+          "name":"Rigid Highlands",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":112,
+          "name":"Arreat Plateau",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":113,
+          "name":"Crystalline Passage",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":114,
+          "name":"Frozen River",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":115,
+          "name":"Crystalized Cavern Level 2",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":116,
+          "name":"Echo Chamber",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":117,
+          "name":"Frozen Tundra",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":118,
+          "name":"The Ancients Way",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":119,
+          "name":"Glacial Caves",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":120,
+          "name":"Ancient Summit",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":121,
+          "name":"Nihlathaks Temple",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":122,
+          "name":"Halls of Anguish",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":123,
+          "name":"Halls of Pain",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":124,
+          "name":"Halls of Vaught",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":128,
+          "name":"The Worldstone Keep Level 1",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":129,
+          "name":"The Worldstone Keep Level 2",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":130,
+          "name":"The Worldstone Keep Level 3",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":131,
+          "name":"Throne of Destruction",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       },
+       {
+          "id":132,
+          "name":"The Worldstone Chamber",
+          "act":5,
+          "mapText": "",
+          "mapIcon": ""
+       }
+    ]
+ }

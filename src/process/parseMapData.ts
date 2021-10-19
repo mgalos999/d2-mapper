@@ -1,15 +1,17 @@
-import { MapData, Type } from "../types/MapData.type";
+import { Level, ObjectType } from "../types/MapList.type";
 import { Circle, DrawingElements, Rectangle } from "../types/DrawingData.type";
 import { MapMod } from "../types/MapMod.type";
+import { mapRefList } from '../refdata/mapLabels.json';
+import { MapRefData } from "../types/MapRefData";
 
 // accepts data for a single map and HTML template and generates an array of rectangles to draw
-export async function parseMapData(mapData: MapData, mapAttributes: MapMod): Promise<DrawingElements> {
+export async function parseMapData(levelData: Level, mapAttributes: MapMod): Promise<DrawingElements> {
   
   const dotSize = 2; // pixel size
-  let de: DrawingElements = { rectangles: [], circles: [], icons: [] };
+  let de: DrawingElements = { rectangles: [], circles: [], icons: [], text: [] };
 
   // this part generates the walls (collisions as it's called)
-  mapData.map.forEach((coord, index) => {
+  levelData.map.forEach((coord, index) => {
     let fill = false;
     let x = mapAttributes.xOffset * dotSize;
     let y = (mapAttributes.yOffset + index) * dotSize;
@@ -27,12 +29,12 @@ export async function parseMapData(mapData: MapData, mapAttributes: MapMod): Pro
   });
 
   // this part adds the special objects (doors, waypoints etc)
-  mapData.objects.forEach((mapObject, index) => {
+  levelData.objects.forEach((mapObject) => {
     let x = (mapAttributes.xOffset + mapObject.x) * dotSize;
     let y = (mapAttributes.yOffset + mapObject.y) * dotSize;
 
     // waypoints
-    if (mapObject.type === Type.Object) {
+    if (mapObject.type === ObjectType.Object) {
       if (mapObject.name == "Waypoint") {
         let size = dotSize * 10;
         de.rectangles.push({x: x - size / 2, y: y - size / 2, w: size,h: size, c: "#FFFF00"});
@@ -40,6 +42,15 @@ export async function parseMapData(mapData: MapData, mapAttributes: MapMod): Pro
 
       if (mapObject.name == "chest") {
         de.rectangles.push(drawObjRectangle(1, x, y, "#00FFFF"));
+      }
+
+      // mark super chests in lower kurast for farming
+      if (levelData.name == "Lower Kurast") {
+        //if (mapObject.name === undefined) {
+        //if (mapObject.id === 581) {
+          de.rectangles.push(drawObjRectangle(1, x, y, "#00DDFF"));
+        //}
+        //}
       }
 
       //quest items adding a green circle
@@ -57,9 +68,9 @@ export async function parseMapData(mapData: MapData, mapAttributes: MapMod): Pro
     }
 
     // NPCs
-    if (mapObject.type === Type.NPC) {
+    if (mapObject.type === ObjectType.NPC) {
       // magot lair boss
-      if (mapData.name == "Maggot Lair Level 3") {
+      if (levelData.name == "Maggot Lair Level 3") {
         de.circles.push(drawObjRectangle(dotSize, x, y, "#FF0000"));    
       } else {
         de.circles.push({x: x, y: y, w: dotSize, h: dotSize, c: "#FF0000" });
@@ -67,8 +78,10 @@ export async function parseMapData(mapData: MapData, mapAttributes: MapMod): Pro
     }
 
     // Exits
-    if (mapObject.type === Type.Exit) {
+    if (mapObject.type === ObjectType.Exit) {
+      // console.log(`${mapData.id},${mapData.name},${mapObject.id}`);
       let size = dotSize * 10;
+
       de.rectangles.push({
         x: x - size / 2,
         y: y - size / 2,
@@ -76,10 +89,30 @@ export async function parseMapData(mapData: MapData, mapAttributes: MapMod): Pro
         h: size,
         c: "#FF00FF",
       });
+      
+      // the id of the exit object is the id of the map itself
+      let textColor = "#FFFFFF";
+      let fontSize = 20;
+      const mapList: MapRefData = mapRefList.find(map => map.id == mapObject.id);
+      let mapLabel = mapList?.name ? mapList.name : ""
+      if (mapLabel) {
+        const lastDigitExitLocation = mapLabel.substr(-1);
+        const lastDigitCurrentMap = levelData.name.substr(-1);
+        
+        if (isNumeric(lastDigitCurrentMap) && isNumeric(lastDigitExitLocation)) {
+          mapLabel = `L${lastDigitExitLocation}`;
+          textColor = "#000000";
+          fontSize = 18;
+        }
+        de.text.push({x: x, y:y, fontSize: fontSize, text: mapLabel, c: textColor});
+      }
     }
   });
   return de;
 }
+
+const isNumeric = (value: string): boolean =>
+  !new RegExp(/[^\d]/g).test(value.trim());
 
 function drawObjRectangle(dotSize, x, y, color) {
     let size = dotSize * 10;

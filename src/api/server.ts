@@ -1,6 +1,6 @@
 import * as express from "express";
 import { fetchData } from "../process/fetch";
-import { MapList } from "../types/MapData.type";
+import { MapList } from "../types/MapList.type";
 import { generatePNGfromMap } from "../process/generatePNG";
 import { param, validationResult } from "express-validator";
 
@@ -47,10 +47,11 @@ app.get(
       validationResult(req).throw();
       const seed: string = req.params.seed;
       const difficulty: string = req.params.difficulty;
-      const mapid: string = req.params.mapid;
+      let mapid: string = req.params.mapid;
 
       const mapList: MapList = await fetchData(baseUrl, seed, difficulty);
-      const pngBuffer: Buffer = await generatePNGfromMap(mapList.maps[mapid]);
+      const thisMap = mapList.levels.find(level => level.id === parseInt(mapid));
+      const pngBuffer: Buffer = await generatePNGfromMap(thisMap);
       const base64Data = pngBuffer
         .toString("base64")
         .replace(/^data:image\/(png|jpeg|jpg);base64,/, "");

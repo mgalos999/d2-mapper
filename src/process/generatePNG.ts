@@ -1,6 +1,6 @@
 import { createCanvas } from "canvas";
 import { getActualSize, parseMapData } from "./parseMapData";
-import { MapData } from "../types/MapData.type";
+import { Level } from "../types/MapList.type";
 import { DrawingElements } from "../types/DrawingData.type";
 import * as fs from "fs";
 import * as path from "path";
@@ -15,10 +15,11 @@ function savePNG(folderName: string, mapName: string, HTMLdata: Buffer): void {
 }
 
 export async function generatePNGfromMap(
-  mapData: MapData,
+  mapData: Level,
   path: string = ""
 ): Promise<Buffer> {
   let mapAttributes: MapMod = { color: "#AAAAAA", xOffset: 0, yOffset: 0 };
+  console.log(`Generating ${mapData.id} ${mapData.name}`);
   let de: DrawingElements = await parseMapData(mapData, mapAttributes);
   let buf: Buffer = await generatePNG(de);
   if (path !== "") {
@@ -46,6 +47,15 @@ export async function generatePNG(de: DrawingElements): Promise<Buffer> {
     ctx.fillStyle = d.c;
     ctx.arc(d.x, d.y+(d.w/2), d.w/2, 0, 2 * Math.PI);
     ctx.fill();
+  });
+
+
+  de.text.forEach((d) => {
+    ctx.font = `${d.fontSize}px Arial`;
+    ctx.textAlign = "center"; 
+    ctx.textBaseline = "middle"; 
+    ctx.fillStyle = d.c;
+    ctx.fillText(d.text, d.x, d.y);
   });
 
 

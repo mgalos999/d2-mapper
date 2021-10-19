@@ -1,9 +1,9 @@
 export interface DrawingElements {
   rectangles: Rectangle[];
   circles: Circle[];
-  icons: Icon[]
+  icons: Icon[],
+  text: Text[]
 }
-
 
 export interface Rectangle {
   x: number;
@@ -12,7 +12,6 @@ export interface Rectangle {
   h: number;
   c: string;
 }
-
 
 export interface Icon {
   x: number;
@@ -28,4 +27,12 @@ export interface Circle {
   w: number;
   h: number;
   c: string;
+}
+
+export interface Text {
+  x: number;
+  y: number;
+  fontSize: number;
+  text: string;
+  c?: string;
 }

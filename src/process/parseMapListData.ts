@@ -1,4 +1,4 @@
-import { MapData, MapList } from "../types/MapData.type";
+import { Level, MapList } from "../types/MapList.type";
 import * as fs from "fs";
 import * as path from "path";
 import { generatePNGfromMap } from "./generatePNG";
@@ -19,8 +19,8 @@ export default async function parseMapListData(
   let saveLocation: string = path.join(basePath, `${mapList.seed}/${difficulty}`);
 
   let generatedFiles: string[] = [];
-  for (let mapIdx in mapList.maps) {
-    let thisMap: MapData = mapList.maps[mapIdx];
+  for (let mapIdx in mapList.levels) {
+    let thisMap: Level = mapList.levels[mapIdx];
     generatePNGfromMap(thisMap, saveLocation);
   }
 

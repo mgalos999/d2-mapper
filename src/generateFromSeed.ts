@@ -1,8 +1,7 @@
 import { fetchData } from "./process/fetch";
-import { parseMapData } from "./process/parseMapData";
 import readMapListData from "./process/parseMapListData";
 import { Difficulty } from "./types/Difficulty.type";
-import { MapList } from "./types/MapData.type";
+import { MapList } from "./types/MapList.type";
 
 export async function generate(seed: string, difficulty: Difficulty, basePath: string, baseUrl: string) {
   console.log("Started generating maps...");
@@ -15,10 +14,10 @@ export async function generate(seed: string, difficulty: Difficulty, basePath: s
 export async function generateSingle(seed: string, difficulty: Difficulty, basePath: string, baseUrl: string, mapId: number) {
   console.log("Started generating map...");
   const mapList: MapList = await fetchData(baseUrl, seed, difficulty);
-  for (let mapIdx in mapList.maps) {
+  for (let mapIdx in mapList.levels) {
     
-    if (mapList.maps[mapIdx].id != mapId) {
-      delete mapList.maps[mapIdx];
+    if (mapList.levels[mapIdx].id != mapId) {
+      delete mapList.levels[mapIdx];
     } 
   }
   await readMapListData(mapList, basePath);

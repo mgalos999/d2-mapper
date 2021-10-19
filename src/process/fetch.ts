@@ -1,7 +1,7 @@
 import fetch from "cross-fetch";
 import * as fs from "fs";
 import * as path from 'path';
-import { MapList } from "../types/MapData.type";
+import { MapList } from "../types/MapList.type";
 
 async function getData(url = "") {
   // Default options are marked with *

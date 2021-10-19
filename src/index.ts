@@ -12,4 +12,4 @@ export {
   generatePNG,
   generatePNGfromMap,
 };
-export type { MapList, MapData } from "./types/MapData.type";
+export type { MapList, Level } from "./types/MapList.type";
